@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 /**
  * free_array - function to free array
  * @array: array to be freed

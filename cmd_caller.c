@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 /**
  * cmd_caller -- function to call  commands using function pointers
  * @string: string to compare  to array

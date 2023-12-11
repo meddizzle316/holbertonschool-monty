@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 /**
  * push -- my push function for stack of stack_t doubly linked lists
  * @value: value of new node

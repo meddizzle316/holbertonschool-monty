@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 #include <string.h>
 #include <ctype.h>
 char *_strdup(const char *src);

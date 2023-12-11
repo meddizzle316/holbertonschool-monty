@@ -1,15 +1,15 @@
-#include "main.h"
+#include "monty.h"
 #include <string.h>
 #include <ctype.h>
-char *_strdup(const char *src);
-char *trim_white_spaces(char *str);
+char *_strdup1(const char *src);
+char *trim_white_spaces1(char *str);
 /**
  * tokenize_file_input - tokenizes file input from given file
  * @file_input: buffer containing input
  *
  * Return: double pointer to array of tokenized strings
  */
-char **tokenize_file_input(char *file_input, size_t new_buffer_size)
+char **tokenize_file_input1(char *file_input, size_t new_buffer_size)
 {
 	char *token;
 	int i;
@@ -22,11 +22,11 @@ char **tokenize_file_input(char *file_input, size_t new_buffer_size)
 		return (NULL);
 	}
 	i = 0;
-	file_input = trim_white_spaces(file_input);
+	file_input = trim_white_spaces1(file_input);
 	token = strtok(file_input, "$");
 	while (token != NULL)
 	{
-		token = trim_white_spaces(token); 
+		token = trim_white_spaces1(token); 
 		if (token != NULL)
 		{
 			t_input[i] = strdup(token);
@@ -46,7 +46,7 @@ char **tokenize_file_input(char *file_input, size_t new_buffer_size)
  * Return: a pointer to a newly malloc'd duplicate of src
  */
 
-char *_strdup(const char *src)
+char *_strdup1(const char *src)
 {
 	char *dst = malloc(strlen(src) + 1);
 
@@ -55,7 +55,7 @@ char *_strdup(const char *src)
 	return (dst);
 }
 
-char *trim_white_spaces(char *str)
+char *trim_white_spaces1(char *str)
 {
 	char *end;
 
