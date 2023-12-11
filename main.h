@@ -1,5 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
+#define _XOPEN_SOURCE 600
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
@@ -41,5 +42,5 @@ void free_array(char **array);
 void push(stack_t **head, unsigned int line_number);
 void (*cmd_caller(const char *s))(stack_t **stack, unsigned int line_number);
 void pop(stack_t **head, unsigned int line_number);
-
+void pall(stack_t **head, unsigned int line_number);
 #endif

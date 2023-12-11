@@ -37,8 +37,9 @@ void push(stack_t **head, unsigned int line_number)
 void pop(stack_t **head, unsigned int line_number)
 {
 	unsigned int *pointer;
-	pointer = &line_number;
 	stack_t *current;
+	
+	pointer = &line_number;
 	if (*head == NULL)
 	{
 		perror("stack is empty");
@@ -53,4 +54,32 @@ void pop(stack_t **head, unsigned int line_number)
 	*pointer = (unsigned int)current->n;
 	free(current);
 
+}
+
+/**
+ * pall - my print all function for stack of stack_t doubly linked lists
+ * @head: double pointer to stack/doubly linked list
+ * @line_number: integer value for various operations
+ *
+ * Return: always void
+ */
+void pall(stack_t **head, unsigned int line_number)
+{
+	stack_t *current;
+	if (*head != NULL)
+	{
+		current = *head;
+		while (current != NULL)
+		{
+			printf("%d\n", current->n);
+			current = current->next;
+		}
+	}
+	else
+	{
+		printf("stack is empty");
+	}
+	/* place holder for line_number var */
+	if (line_number == 0)
+		printf("line number is null");
 }
