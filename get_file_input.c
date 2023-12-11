@@ -46,9 +46,9 @@ char *get_file_input(char *filename)
 	buffer[rd] = '\0';
 	for (i = 0; buffer[i]; i++)
 	{
-		if (buffer[i] == '\n')
-			buffer[i] = ' ';
-	}
+		  if (buffer[i] == '\t')
+			buffer[i] = ' '; 
+	} 
 
 
 	printf("The read buffer is %s\n", buffer);

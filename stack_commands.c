@@ -1,4 +1,6 @@
 #include "monty.h"
+
+extern int push_number;
 /**
  * push -- my push function for stack of stack_t doubly linked lists
  * @value: value of new node
@@ -11,20 +13,25 @@ void push(stack_t **head, unsigned int line_number)
 {
 	stack_t *new;
 
+	if (push_number == -1)
+	{
+		dprintf(2, "L%i: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
 		free(new);
 		exit(2);
 	}
-	new->n = line_number;
+	new->n = push_number;
 	new->prev = NULL;
 	new->next = *head;
 	if (new->next != NULL)
 	{
 		new->next->prev = new;
 	}
-	*head = new;
+	*head = new;	
 }
 
 /**
@@ -66,7 +73,7 @@ void pop(stack_t **head, unsigned int line_number)
 void pall(stack_t **head, unsigned int line_number)
 {
 	stack_t *current;
-	if (*head != NULL)
+	if (*head != NULL && line_number > 0)
 	{
 		current = *head;
 		while (current != NULL)
@@ -75,11 +82,4 @@ void pall(stack_t **head, unsigned int line_number)
 			current = current->next;
 		}
 	}
-	else
-	{
-		printf("stack is empty");
-	}
-	/* place holder for line_number var */
-	if (line_number == 0)
-		printf("line number is null");
 }

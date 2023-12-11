@@ -13,6 +13,7 @@ void (*cmd_caller(const char *s))(stack_t **stack, unsigned int line_number)
 	instruction_t p[] = {
 		{"push", push},
 		{"pop", pop},
+		{"pall", pall},
 		{"0", NULL},
 	};
 

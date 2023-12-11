@@ -1,10 +1,12 @@
 #ifndef MAIN_H
 #define MAIN_H
-#define _XOPEN_SOURCE 600
+#define _XOPEN_SOURCE 700
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+
 
 int _putchar(char c);
 /**
@@ -38,6 +40,7 @@ typedef struct instruction_s
 } instruction_t;
 char **tokenize_file_input(char *file_input, size_t new_buffer_size);
 char *get_file_input(char *filename);
+char **tokenize_file_input_2(char *file_input, size_t new_buffer_size);
 void free_array(char **array);
 void push(stack_t **head, unsigned int line_number);
 void (*cmd_caller(const char *s))(stack_t **stack, unsigned int line_number);
