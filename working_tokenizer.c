@@ -9,7 +9,7 @@ char *trim_white_spaces1(char *str);
  *
  * Return: double pointer to array of tokenized strings
  */
-char **tokenize_file_input1(char *file_input, size_t new_buffer_size)
+char **tokenize_file_input_2(char *file_input, size_t new_buffer_size)
 {
 	char *token;
 	int i;
@@ -31,7 +31,6 @@ char **tokenize_file_input1(char *file_input, size_t new_buffer_size)
 		{
 			t_input[i] = strdup(token);
 			token = strtok(NULL, "$");
-			printf("The value of t_input at %d is %s and length is %lu\n", i, t_input[i], strlen(t_input[i]));
 		}
 		i++;
 	}
