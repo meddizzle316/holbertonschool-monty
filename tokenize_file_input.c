@@ -23,15 +23,15 @@ char **tokenize_file_input(char *file_input, size_t new_buffer_size)
 	}
 	i = 0;
 	/* file_input = trim_white_spaces(file_input); */
-	token = strtok(file_input, " $\t");
+	token = strtok(file_input, " $\t\n");
 	while (token != NULL)
 	{
 		/* token = trim_white_spaces(token); */
 		if (token != NULL)
 		{
 			t_input[i] = strdup(token);
-			token = strtok(NULL, " $\t");
-			printf("The value of t_input at %d is %s and length is %lu\n", i, t_input[i], strlen(t_input[i]));
+			token = strtok(NULL, " $\t\n");
+			/* printf("The value of t_input at %d is %s and length is %lu\n", i, t_input[i], strlen(t_input[i])); */
 		}
 		i++;
 	}

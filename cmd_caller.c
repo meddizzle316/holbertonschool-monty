@@ -14,15 +14,16 @@ void (*cmd_caller(const char *s))(stack_t **stack, unsigned int line_number)
 		{"push", push},
 		{"pop", pop},
 		{"pall", pall},
-		{"0", NULL},
+		{"-1", NULL},
 	};
 
 	i = 0;
-	size = 2;
+	size = 3;
 
-	while (strncmp(p[i].opcode, s, 4) != 0 && i < size) /*compare operation is poopy, only does first letter comparison */
+	while (strcmp(p[i].opcode, s) != 0 && i < size) /*compare operation is poopy, only does first letter comparison */
 	{
 		i++;
+		printf("strcmp has failed on to index %d\n", i);
 	}
 	return (p[i].f);
 }

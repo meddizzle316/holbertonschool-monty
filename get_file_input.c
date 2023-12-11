@@ -7,7 +7,7 @@
  *
  * Return: buffer of read content
  */
-char *get_file_input(char *filename)
+char *get_file_input(char *filename, int *new_lines_removed)
 {
 	char *buffer;
 	size_t buff_size;
@@ -47,7 +47,12 @@ char *get_file_input(char *filename)
 	for (i = 0; buffer[i]; i++)
 	{
 		  if (buffer[i] == '\t')
-			buffer[i] = ' '; 
+			buffer[i] = ' ';
+		  if (buffer[i] == '\n' && buffer[i + 1] == '\n')
+			{	
+			  buffer[i] = ' ';
+			  (*new_lines_removed)++;
+			}
 	} 
 
 
