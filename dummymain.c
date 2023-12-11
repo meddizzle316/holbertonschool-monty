@@ -1,13 +1,14 @@
 #include "monty.h"
 
-int push_number = 0;
+int pn = 0;
 
 int main(int argc, char** argv)
 {
 	char *read_buffer;
 	char **t_input;
 	unsigned int i;
-	char *p;
+	unsigned int x;
+	int new_line_removed = 0;
 	stack_t *head = NULL;
 	
 	void (*f)(stack_t **, unsigned int line_number);
@@ -15,38 +16,34 @@ int main(int argc, char** argv)
 	read_buffer = NULL;
 	if (argc == 2)
 	{
-		read_buffer = get_file_input(argv[1]);
+		read_buffer = get_file_input(argv[1], &new_line_removed);
 		if (read_buffer != NULL)
 		{
-			t_input = tokenize_file_input_2(read_buffer, 20);
-			i = 1;
+			t_input = tokenize_file_input(read_buffer, 20);
+			i = x = 0;
 			while(t_input[i])
 			{
 				f = cmd_caller(t_input[i]);
 				if (f)
 				{
-					if (!strncmp(t_input[i], "push", 4))
+					x++;
+					if (!strncmp(t_input[i], "push", 4) && t_input[i + 1])
 					{
-						p = t_input[i];
-						while (*p)
-						{
-							if(isdigit(*p) || ((*p =='-' || *p=='+') && isdigit(*(p + 1))))
-							{
-								push_number = (int)strtol(p, &p, 10);
-								break;
-							}
-							else
-							{
-								p++;
-							}
-							push_number = -1;
-						}
-						f(&head, i);
-					/*	pall(&head, i); */
+						extract_number(t_input[i + 1]);
+						f(&head, x + new_line_removed);
+					        pall(&head, x); 
+					}
+					else if ((!strncmp(t_input[i], "push", 4) && !t_input[i + 1]) || pn == -1)
+					{
+						pn = -1;
+						f(&head, x + new_line_removed);
+						free_array(t_input);
+						free_stack(&head);
+						exit(EXIT_FAILURE);
 					}
 					else
 					{
-						f(&head, i);
+						f(&head, x + new_line_removed);
 					}
 				
 				}
@@ -56,6 +53,7 @@ int main(int argc, char** argv)
 			{
 				free_array(t_input);
 			}
+			free_stack(&head);
 		}
 
 	}
