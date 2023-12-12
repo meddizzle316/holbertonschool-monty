@@ -38,7 +38,7 @@ int main(int argc, char** argv)
 							f(&head, x);
 						}
 					}
-					if ((!strncmp(t_input[i], "push", 4) && !t_input[i + 1]) || pn == -1)
+					else if ((!strncmp(t_input[i], "push", 4) && !t_input[i + 1]) || pn == -1)
 					{
 						pn = -1;
 						f(&head, x);
