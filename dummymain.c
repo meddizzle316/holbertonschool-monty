@@ -28,12 +28,14 @@ int main(int argc, char** argv)
 				f = cmd_caller(t_input[i]);
 				if (f)
 				{
+					/* printf("f is valid at token %d", i); */
 					x++;
 					if (!strncmp(t_input[i], "push", 4) && t_input[i + 1])
 					{
 						is_num = extract_number(t_input[i + 1]);
 						if (is_num == 1)
 						{
+							/* printf("is num operation successful\n"); */
 							i++;
 							f(&head, x);
 						}
