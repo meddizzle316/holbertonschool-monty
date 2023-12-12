@@ -26,7 +26,7 @@ char *get_file_input(char *filename, int *new_lines_removed)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 	{
-		dprintf(2, "Error: Can't open file %s", filename);
+		dprintf(2, "Error: Can't open file %s\n", filename);
 		free(buffer);
 		close(fd);
 		return (NULL);

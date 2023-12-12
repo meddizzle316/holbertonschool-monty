@@ -20,7 +20,8 @@ int main(int argc, char** argv)
 		if (read_buffer != NULL)
 		{
 			t_input = tokenize_file_input(read_buffer, 20);
-			i = x = 0;
+			i = 0;
+			x = 1;
 			while(t_input[i])
 			{
 				f = cmd_caller(t_input[i]);
@@ -63,6 +64,7 @@ int main(int argc, char** argv)
 	else
 	{
 		dprintf(2, "USAGE: monty file\n");
+		exit(1);
 	}
 	return (0);
 }
