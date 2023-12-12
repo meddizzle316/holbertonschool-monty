@@ -33,4 +33,5 @@ int extract_number(char *string)
 		}
 		pn = -1;
 	}
+	return (-1);
 }
