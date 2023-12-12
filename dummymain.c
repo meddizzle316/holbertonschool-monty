@@ -30,19 +30,19 @@ int main(int argc, char** argv)
 					if (!strncmp(t_input[i], "push", 4) && t_input[i + 1])
 					{
 						extract_number(t_input[i + 1]);
-						f(&head, x + new_line_removed);
+						f(&head, x);
 					}
 					else if ((!strncmp(t_input[i], "push", 4) && !t_input[i + 1]) || pn == -1)
 					{
 						pn = -1;
-						f(&head, x + new_line_removed);
+						f(&head, x);
 						free_array(t_input);
 						free_stack(&head);
 						exit(EXIT_FAILURE);
 					}
 					else
 					{
-						f(&head, x + new_line_removed);
+						f(&head, x);
 					}
 				
 				}
@@ -54,7 +54,15 @@ int main(int argc, char** argv)
 			}
 			free_stack(&head);
 		}
+		else
+		{
+			exit(1);
+		}
 
+	}
+	else
+	{
+		dprintf(2, "USAGE: monty file\n");
 	}
 	return (0);
 }
