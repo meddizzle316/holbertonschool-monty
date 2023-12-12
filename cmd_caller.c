@@ -20,8 +20,12 @@ void (*cmd_caller(const char *s))(stack_t **stack, unsigned int line_number)
 	i = 0;
 	size = 3;
 
-	while (strcmp(p[i].opcode, s) != 0 && i < size) /*compare operation is poopy, only does first letter comparison */
+	while (i < size)
 	{
+		if (strncmp(p[i].opcode, s, 4) == 0) /*compare operation is poopy, only does first letter comparison */
+		{
+			return (p[i].f);	
+		}
 		i++;
 	}
 	return (p[i].f);

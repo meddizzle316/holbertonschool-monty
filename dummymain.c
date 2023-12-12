@@ -31,7 +31,6 @@ int main(int argc, char** argv)
 					{
 						extract_number(t_input[i + 1]);
 						f(&head, x + new_line_removed);
-					        pall(&head, x); 
 					}
 					else if ((!strncmp(t_input[i], "push", 4) && !t_input[i + 1]) || pn == -1)
 					{

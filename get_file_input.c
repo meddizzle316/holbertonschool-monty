@@ -26,14 +26,17 @@ char *get_file_input(char *filename, int *new_lines_removed)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 	{
-		perror("file cannot be found");
+		dprintf(2, "Error: Can't open file %s", filename);
+		free(buffer);
 		close(fd);
+		return (NULL);
 	}
 	rd = read(fd, buffer, buff_size);
 	if (rd == -1)
 	{
-		perror("error reading file");
 		close(fd);
+		free(buffer);
+		return (NULL);
 	}
 	buffer[rd] = '\0';
 	for (i = 0; buffer[i]; i++)
