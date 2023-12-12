@@ -47,5 +47,5 @@ void (*cmd_caller(const char *s))(stack_t **stack, unsigned int line_number);
 void pop(stack_t **head, unsigned int line_number);
 void pall(stack_t **head, unsigned int line_number);
 void free_stack(stack_t **head);
-void extract_number(char *string);
+int extract_number(char *string);
 #endif

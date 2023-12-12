@@ -8,6 +8,7 @@ int main(int argc, char** argv)
 	char **t_input;
 	unsigned int i;
 	unsigned int x;
+	int is_num;
 	int new_line_removed = 0;
 	stack_t *head = NULL;
 	
@@ -30,10 +31,14 @@ int main(int argc, char** argv)
 					x++;
 					if (!strncmp(t_input[i], "push", 4) && t_input[i + 1])
 					{
-						extract_number(t_input[i + 1]);
-						f(&head, x);
+						is_num = extract_number(t_input[i + 1]);
+						if (is_num == 1)
+						{
+							i++;
+							f(&head, x);
+						}
 					}
-					else if ((!strncmp(t_input[i], "push", 4) && !t_input[i + 1]) || pn == -1)
+					if ((!strncmp(t_input[i], "push", 4) && !t_input[i + 1]) || pn == -1)
 					{
 						pn = -1;
 						f(&head, x);
@@ -46,6 +51,13 @@ int main(int argc, char** argv)
 						f(&head, x);
 					}
 				
+				}
+				else if ((is_num = extract_number(t_input[i]) != 1)) 
+				{
+					dprintf(2, "L%i: unknown instruction %s\n", x, t_input[i]);
+					free_array(t_input);
+					free_stack(&head);
+					exit(EXIT_FAILURE);
 				}
 				i++;
 			}

@@ -4,11 +4,11 @@
  * extract_number -- my function for getting an int from a char string
  * @string: given string to extract from
  * 
- * Return: always void; sets push_number to int extracted or -1 if none found
+ * Return: 1 if number found, -1 if not
  */
 extern int pn;
 
-void extract_number(char *string)
+int extract_number(char *string)
 {
 	char *p;
 	
@@ -18,14 +18,14 @@ void extract_number(char *string)
 	if (p == NULL)
 	{
 		pn = -1;
-		exit(2);
+		return(-1);
 	}
 	while (*p)
 	{
 		if(isdigit(*p) || ((*p == '-' || *p == '+') && isdigit(*(p + 1))))
 		{
 			pn = (int)strtol(p, &p, 10);
-			break;
+			return (1);
 		}
 		else
 		{
