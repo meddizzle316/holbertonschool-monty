@@ -29,19 +29,11 @@ char *get_file_input(char *filename, int *new_lines_removed)
 		perror("file cannot be found");
 		close(fd);
 	}
-	else
-	{
-		printf("file was opened successfully\n");
-	}
 	rd = read(fd, buffer, buff_size);
 	if (rd == -1)
 	{
 		perror("error reading file");
 		close(fd);
-	}
-	else
-	{
-		printf("successfully read file\n");
 	}
 	buffer[rd] = '\0';
 	for (i = 0; buffer[i]; i++)
@@ -54,10 +46,6 @@ char *get_file_input(char *filename, int *new_lines_removed)
 			  (*new_lines_removed)++;
 			}
 	} 
-
-
-	printf("The read buffer is %s\n", buffer);
-
 	close(fd);
 	return (buffer);
 }

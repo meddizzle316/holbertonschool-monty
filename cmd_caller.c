@@ -23,7 +23,6 @@ void (*cmd_caller(const char *s))(stack_t **stack, unsigned int line_number)
 	while (strcmp(p[i].opcode, s) != 0 && i < size) /*compare operation is poopy, only does first letter comparison */
 	{
 		i++;
-		printf("strcmp has failed on to index %d\n", i);
 	}
 	return (p[i].f);
 }
