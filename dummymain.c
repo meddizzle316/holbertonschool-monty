@@ -60,7 +60,7 @@ int main(int argc, char** argv)
 					free_stack(&head);
 					exit(EXIT_FAILURE);
 				}
-				pall(&head, x);
+				/* pall(&head, x); */
 				i++;
 			}
 			if (t_input)
