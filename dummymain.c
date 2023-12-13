@@ -30,29 +30,26 @@ int main(int argc, char** argv)
 				f = cmd_caller(t_input[i]);
 				if (f)
 				{
-					/* printf("f is valid at token %d\n", i);  */
+					/* printf("f is valid at token %d\n", i); */
 					x++;
-					if (t_input[i + 1])
-					{
-						is_num = extract_number(t_input[i + 1]);
-						/* printf("is_num value at %d is: %d\n", i, is_num); */
-					}
+					is_num = extract_number(t_input[i + 1]);
 					if (!strncmp(t_input[i], "push", 4) && is_num == 1)
 					{
 						/* printf("is num operation successful\n"); */ 
 						i++;
-						f(&head, x);
+						f(&head, (x + new_line_removed));
 					}
 					else if ((!strncmp(t_input[i], "push", 4) && is_num == -1))
 					{
-						f(&head, x);
+						/* printf("is_num operation failed\n"); */
+						f(&head, (x + new_line_removed));
 						free_array(t_input);
 						free_stack(&head);
 						exit(1);
 					}
 					else
 					{
-						f(&head, x);
+						f(&head, (x + new_line_removed));
 					}
 				
 				}
@@ -63,7 +60,7 @@ int main(int argc, char** argv)
 					free_stack(&head);
 					exit(EXIT_FAILURE);
 				}
-				/* pall(&head, x); */
+				pall(&head, x);
 				i++;
 			}
 			if (t_input)

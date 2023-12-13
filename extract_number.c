@@ -14,12 +14,14 @@ int extract_number(char *string)
 	char *end;
 	p = NULL;
 	end = NULL;
-	if (string)
-		p = string;
-	if (p == NULL)
+	if (string == NULL)
 	{
 		pn = INT_MIN;
 		return(-1);
+	}
+	if (string)
+	{
+		p = string;
 	}
 	while (*p)
 	{
