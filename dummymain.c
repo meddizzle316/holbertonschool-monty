@@ -9,6 +9,7 @@ int main(int argc, char** argv)
 	unsigned int i;
 	unsigned int x;
 	int is_num;
+	size_t rd;
 	int new_line_removed = 0;
 	stack_t *head = NULL;
 	
@@ -17,10 +18,10 @@ int main(int argc, char** argv)
 	read_buffer = NULL;
 	if (argc == 2)
 	{
-		read_buffer = get_file_input(argv[1], &new_line_removed);
+		read_buffer = get_file_input(argv[1], &new_line_removed, &rd);
 		if (read_buffer != NULL)
 		{
-			t_input = tokenize_file_input(read_buffer, 20);
+			t_input = tokenize_file_input(read_buffer, (rd / 3));
 			i = 0;
 			x = 1;
 			while(t_input[i])

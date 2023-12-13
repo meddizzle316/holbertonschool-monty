@@ -1,20 +1,22 @@
 #include "monty.h"
 #include <fcntl.h>
 #include <unistd.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 /**
  * get_file_input -- first attempt  to open file and save in buffer
  * @filename: filename to be read
  *
  * Return: buffer of read content
  */
-char *get_file_input(char *filename, int *new_lines_removed)
+char *get_file_input(char *filename, int *new_lines_removed, size_t *rd)
 {
 	char *buffer;
-	size_t buff_size;
 	int fd;
-	int rd;
 	int i;
-
+	struct stat sb;
+	FILE *file;
+	/**
 	buff_size = 1024;
 
 	buffer = malloc(sizeof(char) * buff_size);
@@ -23,22 +25,35 @@ char *get_file_input(char *filename, int *new_lines_removed)
 		free(buffer);
 		return (NULL);
 	}
+	**/
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 	{
 		dprintf(2, "Error: Can't open file %s\n", filename);
-		free(buffer);
 		close(fd);
 		return (NULL);
 	}
-	rd = read(fd, buffer, buff_size);
-	if (rd == -1)
+	file = fopen(filename, "r");
+	if (file == NULL)
+	{
+		dprintf(2, "Error: Can't open file %s\n", filename);
+		close(fd);
+		fclose(file);
+		return (NULL);
+	}
+	fstat(fd, &sb);
+
+	/* mallocing buffer now that we have size */
+	buffer = malloc(sizeof(char) * (sb.st_size + 1));
+	*rd = fread(buffer, 1, (sb.st_size + 1), file);
+	if (*rd == 0)
 	{
 		close(fd);
+		fclose(file);
 		free(buffer);
 		return (NULL);
 	}
-	buffer[rd] = '\0';
+	buffer[*rd] = '\0';
 	for (i = 0; buffer[i]; i++)
 	{
 		  if (buffer[i] == '\t')
@@ -50,5 +65,6 @@ char *get_file_input(char *filename, int *new_lines_removed)
 			}
 	} 
 	close(fd);
+	fclose(file);
 	return (buffer);
 }
