@@ -58,11 +58,13 @@ char *get_file_input(char *filename, int *new_lines_removed, size_t *rd)
 	{
 		  if (buffer[i] == '\t')
 			buffer[i] = ' ';
-		  if (buffer[i] == '\n' && buffer[i + 1] == '\n')
+		  /** 
+		   * if (buffer[i] == '\n' && buffer[i + 1] == '\n')
 			{	
 			  buffer[i] = ' ';
 			  (*new_lines_removed)++;
 			}
+		*/
 	} 
 	close(fd);
 	fclose(file);
