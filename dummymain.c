@@ -23,31 +23,32 @@ int main(int argc, char** argv)
 		{
 			t_input = tokenize_file_input(read_buffer, (rd / 3));
 			i = 0;
-			x = 1;
+			x = 0;
 			while(t_input[i])
 			{
+				is_num = 0;
 				f = cmd_caller(t_input[i]);
 				if (f)
 				{
-					/* printf("f is valid at token %d", i); */
+					/* printf("f is valid at token %d\n", i);  */
 					x++;
-					if (!strncmp(t_input[i], "push", 4) && t_input[i + 1])
+					if (t_input[i + 1])
 					{
 						is_num = extract_number(t_input[i + 1]);
-						if (is_num == 1)
-						{
-							/* printf("is num operation successful\n"); */
-							i++;
-							f(&head, x);
-						}
+						/* printf("is_num value at %d is: %d\n", i, is_num); */
 					}
-					else if ((!strncmp(t_input[i], "push", 4) && !t_input[i + 1]) || pn == -1)
+					if (!strncmp(t_input[i], "push", 4) && is_num == 1)
 					{
-						pn = -1;
+						/* printf("is num operation successful\n"); */ 
+						i++;
+						f(&head, x);
+					}
+					else if ((!strncmp(t_input[i], "push", 4) && is_num == -1))
+					{
 						f(&head, x);
 						free_array(t_input);
 						free_stack(&head);
-						exit(EXIT_FAILURE);
+						exit(1);
 					}
 					else
 					{
@@ -62,6 +63,7 @@ int main(int argc, char** argv)
 					free_stack(&head);
 					exit(EXIT_FAILURE);
 				}
+				/* pall(&head, x); */
 				i++;
 			}
 			if (t_input)

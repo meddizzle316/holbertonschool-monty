@@ -1,5 +1,5 @@
 #include "monty.h"
-
+#include <limits.h>
 /**
  * extract_number -- my function for getting an int from a char string
  * @string: given string to extract from
@@ -11,27 +11,33 @@ extern int pn;
 int extract_number(char *string)
 {
 	char *p;
-	
-	p = NULL;	
+	char *end;
+	p = NULL;
+	end = NULL;
 	if (string)
 		p = string;
 	if (p == NULL)
 	{
-		pn = -1;
+		pn = INT_MIN;
 		return(-1);
 	}
 	while (*p)
 	{
 		if(isdigit(*p) || ((*p == '-' || *p == '+') && isdigit(*(p + 1))))
 		{
-			pn = (int)strtol(p, &p, 10);
+			pn = (int)strtol(p, &end, 10);
+			if (*end != '\0')
+			{
+				pn = INT_MIN;
+				return (-1);
+			}
 			return (1);
 		}
 		else
 		{
 			p++;
 		}
-		pn = -1;
+		pn = INT_MIN;
 	}
 	return (-1);
 }

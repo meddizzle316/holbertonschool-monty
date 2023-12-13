@@ -13,7 +13,7 @@ void push(stack_t **head, unsigned int line_number)
 {
 	stack_t *new;
 
-	if (pn == -1)
+	if (pn == INT_MIN)
 	{
 		dprintf(2, "L%i: usage: push integer\n", line_number);
 	}
