@@ -55,7 +55,7 @@ int main(int argc, char** argv)
 				}
 				else if ((is_num = extract_number(t_input[i]) != 1)) 
 				{
-					dprintf(2, "L%i: unknown instruction %s\n", x, t_input[i]);
+					dprintf(2, "L%i: unknown instruction %s\n", x + 1, t_input[i]);
 					free_array(t_input);
 					free_stack(&head);
 					exit(EXIT_FAILURE);
