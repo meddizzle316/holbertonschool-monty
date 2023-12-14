@@ -31,7 +31,7 @@ int main(int argc, char** argv)
 				f = cmd_caller(t_input[i]);
 				if (f)
 				{
-					/* printf("f is valid at token %d\n", i); */
+					/* printf("f is valid at token %d\n", i); */ 
 					if (!strncmp(t_input[i], "push", 4))
 					{
 						is_num = extract_number(t_input[i]);
@@ -61,10 +61,6 @@ int main(int argc, char** argv)
 					free_stack(&head);
 					free(read_buffer);
 					exit(EXIT_FAILURE);
-				}
-				else if (is_spaces == 1)
-				{
-					i++;
 				}
 				/* pall(&head, x); */
 				i++;

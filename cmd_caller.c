@@ -22,10 +22,10 @@ void (*cmd_caller(const char *s))(stack_t **stack, unsigned int line_number)
 	i = 0;
 	size = 3;
 	copied_s = strdup(s);
-	token = strtok(copied_s, " ");
+	token = strtok(copied_s, " \r\n\v\f");
 	while (token != NULL)
 	{
-		token = strtok(NULL, " ");
+		token = strtok(NULL, " \r\n\v\f");
 	}
 	while (i < size)
 	{
@@ -34,7 +34,7 @@ void (*cmd_caller(const char *s))(stack_t **stack, unsigned int line_number)
 			free(copied_s);
 			return (p[i].f);	
 		}
-		/* printf("command caller: match failed -- incrementing %d to %d\n", i, i + 1); */
+		/* printf("command caller: match failed -- incrementing %d to %d\n", i, i + 1); */ 
 		i++;
 	}
 	free(copied_s);
