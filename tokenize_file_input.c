@@ -16,14 +16,17 @@ char **tokenize_file_input(char *file_input, size_t new_buffer_size)
 
 	char **t_input;
 	t_input = malloc(sizeof(char *) * new_buffer_size);
-	if (t_input == NULL)
+	if (t_input == NULL || new_buffer_size == 0)
 	{
 		free(t_input);
 		return (NULL);
 	}
 	i = 0;
 	/* file_input = trim_white_spaces(file_input); */
-	token = strtok(file_input, "$\n");
+	if (file_input != NULL)
+		token = strtok(file_input, "$\n");
+	else
+		token = NULL;
 	while (token != NULL)
 	{
 		token = trim_white_spaces(token); 

@@ -34,7 +34,7 @@ void (*cmd_caller(const char *s))(stack_t **stack, unsigned int line_number)
 	}
 	while (i < size)
 	{
-		if (strncmp(p[i].opcode, copied_s, 5) == 0) /*compare operation is poopy, only does first letter comparison */
+		if (strncmp(p[i].opcode, copied_s, 5) == 0) 
 		{
 			free(copied_s);
 			return (p[i].f);	

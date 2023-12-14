@@ -22,7 +22,7 @@ int main(int argc, char** argv)
 		/* printf("value of nl_removed is %d\n", nl_removed); */
 		if (read_buffer != NULL)
 		{
-			t_input = tokenize_file_input(read_buffer, (rd / 3));
+			t_input = tokenize_file_input(read_buffer, (rd / 2));
 			if (t_input == NULL)
 			{
 				free(read_buffer);
@@ -31,7 +31,6 @@ int main(int argc, char** argv)
 			i = 0;
 			while(t_input[i])
 			{
-				is_num = 0;
 				is_spaces = all_spaces(t_input[i]);
 				f = cmd_caller(t_input[i]);
 				if (f)

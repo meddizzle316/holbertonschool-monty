@@ -35,7 +35,7 @@ char *get_file_input(char *filename, int *new_lines_removed, size_t *rd)
 
 	/* mallocing buffer now that we have size */
 	buffer = malloc(sizeof(char) * (sb.st_size + 1));
-	if (buffer == NULL)
+	if (buffer == NULL || sb.st_size == 0)
 	{
 		close(fd);
 		fclose(file);
@@ -57,11 +57,11 @@ char *get_file_input(char *filename, int *new_lines_removed, size_t *rd)
 			buffer[i] = ' ';
 		  if (buffer[i] == '\n') 
 			{
-				if (buffer[i + 1] == '\n')
+				if (buffer[i + 1] && buffer[i + 1] == '\n')
 				{
 					(*new_lines_removed)++;
 				}
-				while (buffer[i + 1] == '\n')
+				while (buffer[i + 1] && buffer[i + 1] == '\n')
 				{
 					buffer[i] = ' ';
 					i++;
