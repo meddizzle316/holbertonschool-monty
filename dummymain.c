@@ -19,7 +19,7 @@ int main(int argc, char** argv)
 	if (argc == 2)
 	{
 		read_buffer = get_file_input(argv[1], &nl_removed, &rd);
-		printf("value of nl_removed is %d\n", nl_removed);
+		/* printf("value of nl_removed is %d\n", nl_removed); */
 		if (read_buffer != NULL)
 		{
 			t_input = tokenize_file_input(read_buffer, (rd / 2));
@@ -35,7 +35,7 @@ int main(int argc, char** argv)
 				f = cmd_caller(t_input[i]);
 				if (f)
 				{
-					printf("f is valid at token %d\n", i);  
+					/* printf("f is valid at token %d\n", i);  */ 
 					if (!strncmp(t_input[i], "push", 4))
 					{
 						is_num = extract_number(t_input[i]);
