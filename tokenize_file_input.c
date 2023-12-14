@@ -38,21 +38,6 @@ char **tokenize_file_input(char *file_input, size_t new_buffer_size)
 	t_input[i] = NULL;
 	return (t_input);
 }
-/**
- * _strdup - a copy of strdup, throws errors if I don't do this
- * @src: source string to be duplicated
- *
- * Return: a pointer to a newly malloc'd duplicate of src
- */
-
-char *_strdup(const char *src)
-{
-	char *dst = malloc(strlen(src) + 1);
-
-	if (dst == NULL) return NULL;
-	strcpy(dst, src);
-	return (dst);
-}
 
 char *trim_white_spaces(char *str)
 {
