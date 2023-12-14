@@ -40,7 +40,7 @@ int main(int argc, char** argv)
 						}
 						else
 						{
-							dprintf(2, "L%i: usage: push integer\n", i + 1 + nl_removed);
+							dprintf(2, "L%i: usage: push integer\n", i + 1);
 							free(t_input);
 							free(read_buffer);
 							free_stack(&head);
