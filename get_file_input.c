@@ -35,6 +35,13 @@ char *get_file_input(char *filename, int *new_lines_removed, size_t *rd)
 
 	/* mallocing buffer now that we have size */
 	buffer = malloc(sizeof(char) * (sb.st_size + 1));
+	if (buffer == NULL)
+	{
+		close(fd);
+		fclose(file);
+		free(buffer);
+		return (NULL);
+	}
 	*rd = fread(buffer, 1, (sb.st_size + 1), file);
 	if (*rd == 0)
 	{
