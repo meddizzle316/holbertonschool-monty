@@ -45,16 +45,14 @@ char **tokenize_file_input(char *file_input, size_t new_buffer_size)
 char *trim_white_spaces(char *str)
 {
 	char *end;
-
-	while(isspace((unsigned char)*str)) str++;
-
-	if (*str == 0) 
-	 	return (str); 
-
-	end = str + strlen(str) - 1;
-	while (end > str && isspace((unsigned char)*end)) end--;
-
-	end[1] = '\0';
-
+	if (str != NULL)
+	{
+		while(isspace((unsigned char)*str)) str++;
+		if (*str == 0) 
+	 		return (str); 
+		end = str + strlen(str) - 1;
+		while (end > str && isspace((unsigned char)*end)) end--;
+		end[1] = '\0';
+	}
 	return (str);
 }

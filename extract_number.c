@@ -22,7 +22,8 @@ int extract_number(char *string)
 	if (string)
 	{
 		p = strtok(string, " ");
-		p = strtok(NULL, " ");
+		if (p)
+			p = strtok(NULL, " ");
 	}
 	while (p && *p)
 	{
