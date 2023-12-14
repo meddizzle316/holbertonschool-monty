@@ -12,12 +12,13 @@ extern int pn;
 void push(stack_t **head, unsigned int line_number)
 {
 	stack_t *new;
+
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
 		free(new);
 		dprintf(2, "error at %i", line_number);
-		exit(2);
+		return;
 	}
 	new->n = pn;
 	new->prev = NULL;
