@@ -23,6 +23,11 @@ int main(int argc, char** argv)
 		if (read_buffer != NULL)
 		{
 			t_input = tokenize_file_input(read_buffer, (rd / 3));
+			if (t_input == NULL)
+			{
+				free(read_buffer);
+				return (-1);
+			}
 			i = 0;
 			while(t_input[i])
 			{

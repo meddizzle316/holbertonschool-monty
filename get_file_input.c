@@ -40,7 +40,7 @@ char *get_file_input(char *filename, int *new_lines_removed, size_t *rd)
 		close(fd);
 		fclose(file);
 		free(buffer);
-		return (NULL);
+		exit(1);
 	}
 	*rd = fread(buffer, 1, (sb.st_size + 1), file);
 	if (*rd == 0)
