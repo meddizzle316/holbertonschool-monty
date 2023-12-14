@@ -19,6 +19,7 @@ int main(int argc, char** argv)
 	if (argc == 2)
 	{
 		read_buffer = get_file_input(argv[1], &nl_removed, &rd);
+		printf("value of nl_removed is %d\n", nl_removed);
 		if (read_buffer != NULL)
 		{
 			t_input = tokenize_file_input(read_buffer, (rd / 3));
@@ -60,6 +61,10 @@ int main(int argc, char** argv)
 					free_stack(&head);
 					free(read_buffer);
 					exit(EXIT_FAILURE);
+				}
+				else if (is_spaces == 1)
+				{
+					i++;
 				}
 				/* pall(&head, x); */
 				i++;

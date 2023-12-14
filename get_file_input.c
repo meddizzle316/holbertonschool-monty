@@ -48,9 +48,17 @@ char *get_file_input(char *filename, int *new_lines_removed, size_t *rd)
 	{
 		  if (buffer[i] == '\t')
 			buffer[i] = ' ';
-		  if (buffer[i] == '\n' && buffer[i + 1] == '\n')
-			{	
-			  (*new_lines_removed)++;
+		  if (buffer[i] == '\n') 
+			{
+				if (buffer[i + 1] == '\n')
+				{
+					(*new_lines_removed)++;
+				}
+				while (buffer[i + 1] == '\n')
+				{
+					buffer[i] = ' ';
+					i++;
+				}
 			}
 	} 
 	close(fd);
