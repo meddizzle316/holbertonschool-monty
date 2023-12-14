@@ -54,7 +54,8 @@ int main(int argc, char** argv)
 				}
 				else if ((is_spaces != 1)) 
 				{
-					dprintf(2, "L%i: unknown instruction %s\n", i + 1 + nl_removed, t_input[i]);
+					t_input[i] = strtok(t_input[i], " ");
+					dprintf(2, "L%i: unknown instruction %s\n", i + 1 + nl_removed,  t_input[i]);
 					free(t_input);
 					free_stack(&head);
 					free(read_buffer);
