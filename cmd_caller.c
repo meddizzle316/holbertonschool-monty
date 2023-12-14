@@ -22,6 +22,11 @@ void (*cmd_caller(const char *s))(stack_t **stack, unsigned int line_number)
 	i = 0;
 	size = 3;
 	copied_s = strdup(s);
+	if (copied_s == NULL)
+	{
+		free(copied_s);
+		return (NULL);
+	}
 	token = strtok(copied_s, " \r\n\v\f");
 	while (token != NULL)
 	{

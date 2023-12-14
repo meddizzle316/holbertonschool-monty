@@ -54,9 +54,7 @@ int main(int argc, char** argv)
 						}
 					}
 					else
-					{
 						f(&head, (i + 1));
-					}
 				}
 				else if ((is_spaces != 1)) 
 				{
@@ -78,9 +76,7 @@ int main(int argc, char** argv)
 			free(read_buffer);
 		}
 		else
-		{
 			exit(1);
-		}
 	}
 	else
 	{
