@@ -19,7 +19,7 @@ int main(int argc, char** argv)
 	if (argc == 2)
 	{
 		read_buffer = get_file_input(argv[1], &nl_removed, &rd);
-		printf("value of nl_removed is %d\n", nl_removed);
+		/* printf("value of nl_removed is %d\n", nl_removed); */
 		if (read_buffer != NULL)
 		{
 			t_input = tokenize_file_input(read_buffer, (rd / 3));
@@ -41,7 +41,7 @@ int main(int argc, char** argv)
 						}
 						else
 						{
-							dprintf(2, "L%i: usage: push integer\n", i + 1);
+							dprintf(2, "L%i: usage: push integer\n", i + 1 + (nl_removed / 2));
 							free(t_input);
 							free(read_buffer);
 							free_stack(&head);
@@ -56,7 +56,7 @@ int main(int argc, char** argv)
 				else if ((is_spaces != 1)) 
 				{
 					t_input[i] = strtok(t_input[i], " ");
-					dprintf(2, "L%i: unknown instruction %s\n", i + 1 + nl_removed,  t_input[i]);
+					dprintf(2, "L%i: unknown instruction %s\n", i + 1 + (nl_removed / 2),  t_input[i]);
 					free(t_input);
 					free_stack(&head);
 					free(read_buffer);

@@ -31,7 +31,7 @@ char **tokenize_file_input(char *file_input, size_t new_buffer_size)
 		{
 			t_input[i] = token;
 			token = strtok(NULL, "$\n");
-			printf("The value of t_input at %d is %s and length is %lu\n", i, t_input[i], strlen(t_input[i]));
+			/* printf("The value of t_input at %d is %s and length is %lu\n", i, t_input[i], strlen(t_input[i])); */
 		}
 		i++;
 	}
