@@ -9,6 +9,8 @@
 void (*cmd_caller(const char *s))(stack_t **stack, unsigned int line_number)
 {
 	int i, size;
+	char *copied_s;
+	char *token;
 
 	instruction_t p[] = {
 		{"push", push},
@@ -19,15 +21,22 @@ void (*cmd_caller(const char *s))(stack_t **stack, unsigned int line_number)
 
 	i = 0;
 	size = 3;
-
+	copied_s = strdup(s);
+	token = strtok(copied_s, " ");
+	while (token != NULL)
+	{
+		token = strtok(NULL, " ");
+	}
 	while (i < size)
 	{
-		if (strncmp(p[i].opcode, s, 5) == 0) /*compare operation is poopy, only does first letter comparison */
+		if (strncmp(p[i].opcode, copied_s, 5) == 0) /*compare operation is poopy, only does first letter comparison */
 		{
+			free(copied_s);
 			return (p[i].f);	
 		}
 		/* printf("command caller: match failed -- incrementing %d to %d\n", i, i + 1); */
 		i++;
 	}
+	free(copied_s);
 	return (p[i].f);
 }

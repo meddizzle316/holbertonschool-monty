@@ -23,19 +23,18 @@ char **tokenize_file_input(char *file_input, size_t new_buffer_size)
 	}
 	i = 0;
 	/* file_input = trim_white_spaces(file_input); */
-	token = strtok(file_input, " $\t\n");
+	token = strtok(file_input, "$\n");
 	while (token != NULL)
 	{
-		/* token = trim_white_spaces(token); */
+		token = trim_white_spaces(token); 
 		if (token != NULL)
 		{
-			t_input[i] = strdup(token);
-			token = strtok(NULL, " $\t\n");
+			t_input[i] = token;
+			token = strtok(NULL, "$\n");
 			/* printf("The value of t_input at %d is %s and length is %lu\n", i, t_input[i], strlen(t_input[i])); */
 		}
 		i++;
 	}
-	free(file_input);
 	t_input[i] = NULL;
 	return (t_input);
 }
@@ -61,8 +60,8 @@ char *trim_white_spaces(char *str)
 
 	while(isspace((unsigned char)*str)) str++;
 
-	if (*str == 0)
-		return (NULL);
+	if (*str == 0) 
+	 	return (str); 
 
 	end = str + strlen(str) - 1;
 	while (end > str && isspace((unsigned char)*end)) end--;

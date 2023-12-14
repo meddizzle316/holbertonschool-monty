@@ -12,25 +12,25 @@ int extract_number(char *string)
 {
 	char *p;
 	char *end;
+
 	p = NULL;
 	end = NULL;
 	if (string == NULL)
 	{
-		pn = INT_MIN;
-		return(-1);
+		return (-1);
 	}
 	if (string)
 	{
-		p = string;
+		p = strtok(string, " ");
+		p = strtok(NULL, " ");
 	}
-	while (*p)
+	while (p && *p)
 	{
 		if(isdigit(*p) || ((*p == '-' || *p == '+') && isdigit(*(p + 1))))
 		{
 			pn = (int)strtol(p, &end, 10);
 			if (*end != '\0')
 			{
-				pn = INT_MIN;
 				return (-1);
 			}
 			return (1);
@@ -39,7 +39,6 @@ int extract_number(char *string)
 		{
 			p++;
 		}
-		pn = INT_MIN;
 	}
 	return (-1);
 }

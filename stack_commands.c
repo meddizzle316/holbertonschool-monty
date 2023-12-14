@@ -12,28 +12,21 @@ extern int pn;
 void push(stack_t **head, unsigned int line_number)
 {
 	stack_t *new;
-
-	if (pn == INT_MIN)
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
 	{
-		dprintf(2, "L%i: usage: push integer\n", line_number);
+		free(new);
+		dprintf(2, "error at %i", line_number);
+		exit(2);
 	}
-	else
+	new->n = pn;
+	new->prev = NULL;
+	new->next = *head;
+	if (new->next != NULL)
 	{
-		new = malloc(sizeof(stack_t));
-		if (new == NULL)
-		{
-			free(new);
-			exit(2);
-		}
-		new->n = pn;
-		new->prev = NULL;
-		new->next = *head;
-		if (new->next != NULL)
-		{
-			new->next->prev = new;
-		}
-		*head = new;
+		new->next->prev = new;
 	}
+	*head = new;
 }
 
 /**

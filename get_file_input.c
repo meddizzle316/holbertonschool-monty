@@ -16,16 +16,6 @@ char *get_file_input(char *filename, int *new_lines_removed, size_t *rd)
 	int i;
 	struct stat sb;
 	FILE *file;
-	/**
-	buff_size = 1024;
-
-	buffer = malloc(sizeof(char) * buff_size);
-	if (buffer == NULL)
-	{
-		free(buffer);
-		return (NULL);
-	}
-	**/
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 	{
@@ -58,13 +48,11 @@ char *get_file_input(char *filename, int *new_lines_removed, size_t *rd)
 	{
 		  if (buffer[i] == '\t')
 			buffer[i] = ' ';
-		  /** 
-		   * if (buffer[i] == '\n' && buffer[i + 1] == '\n')
+		  if (buffer[i] == '\n' && buffer[i + 1] == '\n')
 			{	
 			  buffer[i] = ' ';
 			  (*new_lines_removed)++;
 			}
-		*/
 	} 
 	close(fd);
 	fclose(file);

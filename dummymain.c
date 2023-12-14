@@ -5,12 +5,12 @@ int pn = 0;
 int main(int argc, char** argv)
 {
 	char *read_buffer;
-	char **t_input;
 	unsigned int i;
-	unsigned int x;
 	int is_num;
+	int is_spaces;
 	size_t rd;
-	int new_line_removed = 0;
+	char **t_input;
+	int nl_removed = 0;
 	stack_t *head = NULL;
 	
 	void (*f)(stack_t **, unsigned int line_number);
@@ -18,46 +18,46 @@ int main(int argc, char** argv)
 	read_buffer = NULL;
 	if (argc == 2)
 	{
-		read_buffer = get_file_input(argv[1], &new_line_removed, &rd);
+		read_buffer = get_file_input(argv[1], &nl_removed, &rd);
 		if (read_buffer != NULL)
 		{
 			t_input = tokenize_file_input(read_buffer, (rd / 3));
 			i = 0;
-			x = 0;
 			while(t_input[i])
 			{
 				is_num = 0;
+				is_spaces = all_spaces(t_input[i]);
 				f = cmd_caller(t_input[i]);
 				if (f)
 				{
 					/* printf("f is valid at token %d\n", i); */
-					x++;
-					is_num = extract_number(t_input[i + 1]);
-					if (!strncmp(t_input[i], "push", 4) && is_num == 1)
+					if (!strncmp(t_input[i], "push", 4))
 					{
-						/* printf("is num operation successful\n"); */ 
-						i++;
-						f(&head, (x + new_line_removed));
-					}
-					else if ((!strncmp(t_input[i], "push", 4) && is_num == -1))
-					{
-						/* printf("is_num operation failed\n"); */
-						f(&head, (x + new_line_removed));
-						free_array(t_input);
-						free_stack(&head);
-						exit(1);
+						is_num = extract_number(t_input[i]);
+						if (is_num == 1)
+						{
+							f(&head, (i + 1));
+						}
+						else
+						{
+							dprintf(2, "L%i: usage: push integer\n", i + 1 + nl_removed);
+							free(t_input);
+							free(read_buffer);
+							free_stack(&head);
+							exit(1);
+						}
 					}
 					else
 					{
-						f(&head, (x + new_line_removed));
+						f(&head, (i + 1));
 					}
-				
 				}
-				else if ((is_num = extract_number(t_input[i]) != 1)) 
+				else if ((is_spaces != 1)) 
 				{
-					dprintf(2, "L%i: unknown instruction %s\n", x + 1, t_input[i]);
-					free_array(t_input);
+					dprintf(2, "L%i: unknown instruction %s\n", i + 1 + nl_removed, t_input[i]);
+					free(t_input);
 					free_stack(&head);
+					free(read_buffer);
 					exit(EXIT_FAILURE);
 				}
 				/* pall(&head, x); */
@@ -65,9 +65,10 @@ int main(int argc, char** argv)
 			}
 			if (t_input)
 			{
-				free_array(t_input);
+				free(t_input);
 			}
 			free_stack(&head);
+			free(read_buffer);
 		}
 		else
 		{
