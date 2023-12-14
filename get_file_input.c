@@ -50,7 +50,6 @@ char *get_file_input(char *filename, int *new_lines_removed, size_t *rd)
 			buffer[i] = ' ';
 		  if (buffer[i] == '\n' && buffer[i + 1] == '\n')
 			{	
-			  buffer[i] = ' ';
 			  (*new_lines_removed)++;
 			}
 	} 
