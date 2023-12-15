@@ -7,10 +7,14 @@
  */
 int all_spaces(char *string)
 {
-	while(isspace((unsigned char)*string)) string++;
-
+	while (isspace((unsigned char)*string))
+		string++;
 	if (*string == 0)
+	{
 		return (1);
+	}
 	else
+	{
 		return (0);
+	}
 }

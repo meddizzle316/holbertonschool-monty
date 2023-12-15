@@ -6,13 +6,13 @@
  * 
  * Return: 1 if number found, -1 if not
  */
-extern int pn;
 
 int extract_number(char *string)
 {
 	char *p;
 	char *end;
-
+	
+	pn = 0;
 	p = NULL;
 	end = NULL;
 	if (string == NULL)
