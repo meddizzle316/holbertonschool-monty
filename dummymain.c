@@ -11,13 +11,10 @@ int pn;
 int main(int argc, char **argv)
 {
 	char *read_buffer = NULL;
-	/* unsigned int i; */
-	/* int is_num = 0, is_spaces = 0, */ 
 	int nl_removed = 0;
 	size_t rd;
 	char **t_input;
 	stack_t *head = NULL;
-	/* void (*f)(stack_t **, unsigned int line_number); */
 	
 	if (argc == 2)
 	{
@@ -32,37 +29,6 @@ int main(int argc, char **argv)
 				return (-1);
 			}
 			execute(t_input, read_buffer, nl_removed, &head);
-			/**
-			for (i = 0; t_input[i]; i++)
-			{
-				is_spaces = all_spaces(t_input[i]);
-				f = cmd_caller(t_input[i]);
-				if (f)
-				{
-					 printf("f is valid at token %d\n", i);   
-					if (!strncmp(t_input[i], "push", 4))
-					{
-						is_num = extract_number(t_input[i]);
-						if (is_num == 1)
-							f(&head, (i + 1));
-						else
-						{
-							dprintf(2, "L%i: usage: push integer\n", i + 1 + (nl_removed / 2));
-							free_all_and_exit(t_input, read_buffer, &head, 1);
-						}
-					}
-					else
-						f(&head, (i + 1));
-				}
-				else if ((is_spaces != 1)) 
-				{
-					t_input[i] = strtok(t_input[i], " ");
-					dprintf(2, "L%i: unknown instruction %s\n", i + 1 + (nl_removed / 2),  t_input[i]);
-					free_all_and_exit(t_input, read_buffer, &head, EXIT_FAILURE);
-				}
-				 pall(&head, x); 
-			}
-			**/
 			free_all(t_input, read_buffer, &head);
 		}
 		else
