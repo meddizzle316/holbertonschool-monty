@@ -16,11 +16,12 @@ void (*cmd_caller(const char *s))(stack_t **stack, unsigned int line_number)
 		{"push", push},
 		{"pop", pop},
 		{"pall", pall},
+		{"pint", pint},
 		{"-1", NULL},
 	};
 
 	i = 0;
-	size = 3;
+	size = 4;
 	copied_s = strdup(s);
 	if (copied_s == NULL)
 	{
