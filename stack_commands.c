@@ -43,8 +43,8 @@ void pop(stack_t **head, unsigned int line_number)
 	pointer = &line_number;
 	if (*head == NULL)
 	{
-		perror("stack is empty");
-		exit(2);
+		dprintf(2, "L%i: can't pop an empty stack\n", line_number);
+		exit(1);
 	}
 	current = *head;
 	*head = current->next;
