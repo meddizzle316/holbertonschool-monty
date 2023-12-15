@@ -1,6 +1,5 @@
 #include "monty.h"
 
-extern int pn;
 /**
  * push -- my push function for stack of stack_t doubly linked lists
  * @head: double pointer to stack
