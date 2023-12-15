@@ -1,77 +1,38 @@
 #include "monty.h"
 
-int pn = 0;
-
-int main(int argc, char** argv)
+int pn;
+/**
+ * main - entry point
+ * @argc: number of given arguments
+ * @argv: double pointer that has address of arguments
+ *
+ * Return: 1 if success, 0 or -1 if fail
+ */
+int main(int argc, char **argv)
 {
-	char *read_buffer;
+	char *read_buffer = NULL;
+	int nl_removed = 0;
+	size_t rd;
 	char **t_input;
-	unsigned int i;
-	unsigned int x;
-	int is_num;
-	int new_line_removed = 0;
 	stack_t *head = NULL;
-	
-	void (*f)(stack_t **, unsigned int line_number);
 
-	read_buffer = NULL;
 	if (argc == 2)
 	{
-		read_buffer = get_file_input(argv[1], &new_line_removed);
+		read_buffer = get_file_input(argv[1], &nl_removed, &rd);
+		/* printf("value of nl_removed is %d\n", nl_removed); */
 		if (read_buffer != NULL)
 		{
-			t_input = tokenize_file_input(read_buffer, 20);
-			i = 0;
-			x = 1;
-			while(t_input[i])
+			t_input = tokenize_file_input(read_buffer, (rd / 2));
+			if (t_input == NULL)
 			{
-				f = cmd_caller(t_input[i]);
-				if (f)
-				{
-					x++;
-					if (!strncmp(t_input[i], "push", 4) && t_input[i + 1])
-					{
-						is_num = extract_number(t_input[i + 1]);
-						if (is_num == 1)
-						{
-							i++;
-							f(&head, x);
-						}
-					}
-					else if ((!strncmp(t_input[i], "push", 4) && !t_input[i + 1]) || pn == -1)
-					{
-						pn = -1;
-						f(&head, x);
-						free_array(t_input);
-						free_stack(&head);
-						exit(EXIT_FAILURE);
-					}
-					else
-					{
-						f(&head, x);
-					}
-				
-				}
-				else if ((is_num = extract_number(t_input[i]) != 1)) 
-				{
-					dprintf(2, "L%i: unknown instruction %s\n", x, t_input[i]);
-					free_array(t_input);
-					free_stack(&head);
-					exit(EXIT_FAILURE);
-				}
-				i++;
+				free(read_buffer);
+				return (-1);
 			}
-			if (t_input)
-			{
-				free_array(t_input);
-			}
-			free_stack(&head);
+			execute(t_input, read_buffer, nl_removed, &head);
+			free_all(t_input, read_buffer, &head);
 		}
 		else
-		{
 			exit(1);
-		}
-
 	}
 	else
 	{

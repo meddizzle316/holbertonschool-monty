@@ -6,8 +6,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <limits.h>
 
-
+extern int pn;
 int _putchar(char c);
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -38,14 +39,18 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+void free_all_and_exit(char **t_input, char *read_buffer, stack_t **h, int st);
+void free_all(char **t_input, char *read_buffer, stack_t **h);
 char **tokenize_file_input(char *file_input, size_t new_buffer_size);
-char *get_file_input(char *filename, int *new_line_removed);
+char *get_file_input(char *filename, int *new_line_removed, size_t *rd);
 char **tokenize_file_input_2(char *file_input, size_t new_buffer_size);
 void free_array(char **array);
+int execute(char **t_input, char *read_buffer, int nl_removed, stack_t **head);
 void push(stack_t **head, unsigned int line_number);
 void (*cmd_caller(const char *s))(stack_t **stack, unsigned int line_number);
 void pop(stack_t **head, unsigned int line_number);
 void pall(stack_t **head, unsigned int line_number);
 void free_stack(stack_t **head);
 int extract_number(char *string);
+int all_spaces(char *string);
 #endif
