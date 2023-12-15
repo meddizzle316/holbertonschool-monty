@@ -21,12 +21,10 @@ char *get_file_input(char *filename, int *new_lines_removed, size_t *rd)
 	FILE *file;
 
 	fd = open(filename, O_RDONLY);
-	file = fopen(filename, "r");
 	if (fd == -1)
 	{
 		dprintf(2, "Error: Can't open file %s\n", filename);
 		close(fd);
-		fclose(file);
 		return (NULL);
 	}
 	file = fopen(filename, "r");
