@@ -92,7 +92,7 @@ void pint(stack_t **head, unsigned int line_number)
 		printf("%d\n", (*head)->n);
 	else
 	{
-		dprintf(2, "L%i: can't pint, stack empty", line_number);
+		dprintf(2, "L%i: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 }
