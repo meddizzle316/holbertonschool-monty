@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 	size_t rd;
 	char **t_input;
 	stack_t *head = NULL;
-	
+
 	if (argc == 2)
 	{
 		read_buffer = get_file_input(argv[1], &nl_removed, &rd);

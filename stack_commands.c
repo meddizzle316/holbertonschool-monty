@@ -3,7 +3,6 @@
 extern int pn;
 /**
  * push -- my push function for stack of stack_t doubly linked lists
- * @value: value of new node
  * @head: double pointer to stack
  * @line_number: integer value for various operations
  *
@@ -41,7 +40,7 @@ void pop(stack_t **head, unsigned int line_number)
 {
 	unsigned int *pointer;
 	stack_t *current;
-	
+
 	pointer = &line_number;
 	if (*head == NULL)
 	{
@@ -69,6 +68,7 @@ void pop(stack_t **head, unsigned int line_number)
 void pall(stack_t **head, unsigned int line_number)
 {
 	stack_t *current;
+
 	if (*head != NULL && line_number > 0)
 	{
 		current = *head;

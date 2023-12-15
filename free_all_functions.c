@@ -4,15 +4,15 @@
  * @read_buffer: freeing read_buffer
  * @h: freeing stack
  * @t_input: freeing t_input
- * @stat: exit status
+ * @st: exit status
  * Return: always void
  */
-void free_all_and_exit(char **t_input, char *read_buffer, stack_t **h, int stat)
+void free_all_and_exit(char **t_input, char *read_buffer, stack_t **h, int st)
 {
 	free(t_input);
 	free_stack(h);
 	free(read_buffer);
-	exit(stat);
+	exit(st);
 }
 
 /**
