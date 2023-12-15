@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
- * free_dlistint - frees a dlistint_t list
+ * free_stack - frees a dlistint_t list
  * @head: head of list
  * Return: always void
  */
