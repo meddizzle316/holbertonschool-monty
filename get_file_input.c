@@ -22,7 +22,15 @@ char *get_file_input(char *filename, int *new_lines_removed, size_t *rd)
 
 	fd = open(filename, O_RDONLY);
 	file = fopen(filename, "r");
-	if (file == NULL || fd == -1)
+	if (fd == -1)
+	{
+		dprintf(2, "Error: Can't open file %s\n", filename);
+		close(fd);
+		fclose(file);
+		return (NULL);
+	}
+	file = fopen(filename, "r");
+	if (file == NULL)
 	{
 		dprintf(2, "Error: Can't open file %s\n", filename);
 		close(fd);
