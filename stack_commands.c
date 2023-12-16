@@ -119,3 +119,24 @@ void swap(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 }
+
+/**
+ * add - adds first two elements together and then removes top element
+ * @head: double pointer to head of stack_t
+ * @line_number: line_number for error message
+ *
+ * Return: always void
+ */
+void add(stack_t **head, unsigned int line_number)
+{
+	if (*head != NULL && (*head)->next != NULL)
+	{
+		(*head)->next->n = (*head)->n + (*head)->next->n;
+		pop(head, line_number);
+	}
+	else
+	{
+		dprintf(2, "L%i: can't add, stack too short", line_number);
+		exit(EXIT_FAILURE);
+	}
+}

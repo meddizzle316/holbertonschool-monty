@@ -18,11 +18,12 @@ void (*cmd_caller(const char *s))(stack_t **stack, unsigned int line_number)
 		{"pall", pall},
 		{"pint", pint},
 		{"swap", swap},
+		{"add", add},
 		{"-1", NULL},
 	};
 
 	i = 0;
-	size = 5;
+	size = 6;
 	copied_s = strdup(s);
 	if (copied_s == NULL)
 	{
