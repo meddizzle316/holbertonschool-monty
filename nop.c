@@ -8,4 +8,7 @@
  */
 void nop(stack_t **head, unsigned int line_number)
 {
+	if (*head != NULL && line_number > 0)
+	{
+	}
 }
