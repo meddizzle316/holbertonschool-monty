@@ -19,6 +19,7 @@ void (*cmd_caller(const char *s))(stack_t **stack, unsigned int line_number)
 		{"pint", pint},
 		{"swap", swap},
 		{"add", add},
+		{"nop", nop},
 		{"-1", NULL},
 	};
 

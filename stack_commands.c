@@ -140,3 +140,4 @@ void add(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 }
+
