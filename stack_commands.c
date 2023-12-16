@@ -115,7 +115,7 @@ void swap(stack_t **head, unsigned int line_number)
 	}
 	else
 	{
-		dprintf(2, "L%i: can't swap, stack too short", line_number);
+		dprintf(2, "L%i: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 }
