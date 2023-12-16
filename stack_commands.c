@@ -80,7 +80,7 @@ void pall(stack_t **head, unsigned int line_number)
 }
 
 /**
- * pint: my print first in stack function
+ * pint - my print first in stack function
  * @head: double pointer to stack
  * @line_number: integer value for various operations
  *
@@ -93,6 +93,29 @@ void pint(stack_t **head, unsigned int line_number)
 	else
 	{
 		dprintf(2, "L%i: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+}
+/**
+ * swap - my swap function; swaps first two elements in stack
+ * @head: head of stack to swap elements
+ * @line_number: line_number for error statement
+ *
+ * Return: always void
+ */
+void swap(stack_t **head, unsigned int line_number)
+{
+	int tmp;
+
+	if (*head != NULL && (*head)->next != NULL)
+	{
+		tmp = (*head)->next->n;
+		(*head)->next->n = (*head)->n;
+		(*head)->n = tmp;
+	}
+	else
+	{
+		dprintf(2, "L%i: can't swap, stack too short", line_number);
 		exit(EXIT_FAILURE);
 	}
 }
