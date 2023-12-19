@@ -10,9 +10,13 @@
 void push(stack_t **head, unsigned int line_number)
 {
 	stack_t *new;
+	
+	if (line_number > 0)
+	{
 
+	}
 	new = malloc(sizeof(stack_t));
-	if (new == NULL || line_number < 0)
+	if (new == NULL)
 	{
 		free(new);
 		return;
