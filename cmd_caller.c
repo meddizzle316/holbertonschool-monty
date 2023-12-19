@@ -43,7 +43,6 @@ void (*cmd_caller(const char *s))(stack_t **stack, unsigned int line_number)
 			free(copied_s);
 			return (p[i].f);
 		}
-		/* printf("cmd_caller: match failed -- incrementing %d to %d\n", i, i + 1); */
 		i++;
 	}
 	free(copied_s);

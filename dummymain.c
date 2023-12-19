@@ -25,6 +25,7 @@ int main(int argc, char **argv)
 			t_input = tokenize_file_input(read_buffer, (rd / 2));
 			if (t_input == NULL)
 			{
+				free(t_input);
 				free(read_buffer);
 				return (-1);
 			}
