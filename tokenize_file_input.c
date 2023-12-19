@@ -16,7 +16,7 @@ char **tokenize_file_input(char *file_input, size_t new_buffer_size)
 	char **t_input;
 
 	t_input = malloc(sizeof(char *) * new_buffer_size);
-	if (t_input == NULL || new_buffer_size == 0)
+	if (t_input == NULL)
 	{
 		dprintf(2, "Error: malloc failed\n");
 		return (NULL);
@@ -33,7 +33,6 @@ char **tokenize_file_input(char *file_input, size_t new_buffer_size)
 		{
 			t_input[i] = token;
 			token = strtok(NULL, "$\n");
-			printf("The value of t_input at %d is %s\n", i, t_input[i]);
 		}
 		i++;
 	}
