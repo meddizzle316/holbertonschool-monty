@@ -19,7 +19,7 @@ int main(int argc, char **argv)
 	if (argc == 2)
 	{
 		read_buffer = get_file_input(argv[1], &nl_removed, &rd);
-		/* printf("value of nl_removed is %d\n", nl_removed); */
+		 printf("value of nl_removed is %d\n", nl_removed); 
 		if (read_buffer != NULL)
 		{
 			t_input = tokenize_file_input(read_buffer, (rd / 2));
@@ -29,6 +29,7 @@ int main(int argc, char **argv)
 				free(read_buffer);
 				return (-1);
 			}
+			printf("t_input has worked\n");
 			execute(t_input, read_buffer, nl_removed, &head);
 			free_all(t_input, read_buffer, &head);
 		}
