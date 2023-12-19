@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 	char **t_input;
 	stack_t *head = NULL;
 
-	printf("the program has started\n");
+	dprintf(2, "the program has started\n");
 	if (argc == 2)
 	{
 		read_buffer = get_file_input(argv[1], &nl_removed, &rd);
