@@ -12,7 +12,7 @@ void push(stack_t **head, unsigned int line_number)
 	stack_t *new;
 
 	new = malloc(sizeof(stack_t));
-	if (new == NULL)
+	if (new == NULL || line_number < 0)
 	{
 		free(new);
 		return;
