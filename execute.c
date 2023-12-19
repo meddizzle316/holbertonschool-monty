@@ -21,7 +21,6 @@ int execute(char **t_input, char *read_buffer, int nl_removed, stack_t **head)
 		f = cmd_caller(t_input[i]);
 		if (f)
 		{
-			printf ("f is valid at token %d\n", i);
 			if (!strncmp(t_input[i], "push", 4))
 			{
 				is_num = extract_number(t_input[i]);
