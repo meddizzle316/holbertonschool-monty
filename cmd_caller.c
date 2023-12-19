@@ -20,7 +20,7 @@ void (*cmd_caller(const char *s))(stack_t **stack, unsigned int line_number)
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop},
-		{"-1", NULL},
+		{"NULL", NULL},
 	};
 
 	i = 0;
