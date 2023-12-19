@@ -28,7 +28,7 @@ void (*cmd_caller(const char *s))(stack_t **stack, unsigned int line_number)
 	copied_s = strdup(s);
 	if (copied_s == NULL)
 	{
-		free(copied_s);
+		dprintf(2, "Error: malloc failed\n");
 		return (NULL);
 	}
 	token = strtok(copied_s, " \r\n\v\f");

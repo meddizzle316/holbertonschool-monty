@@ -18,7 +18,7 @@ char **tokenize_file_input(char *file_input, size_t new_buffer_size)
 	t_input = malloc(sizeof(char *) * new_buffer_size);
 	if (t_input == NULL || new_buffer_size == 0)
 	{
-		free(t_input);
+		dprintf(2, "Error: malloc failed\n");
 		return (NULL);
 	}
 	i = 0;

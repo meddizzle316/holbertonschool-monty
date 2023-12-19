@@ -39,7 +39,9 @@ char *get_file_input(char *filename, int *new_lines_removed, size_t *rd)
 	buffer = malloc(sizeof(char) * (sb.st_size + 1));
 	if (buffer == NULL || sb.st_size == 0)
 	{
-		close_and_free(fd, file, buffer);
+		dprintf(2, "Error: malloc failed\n");
+		close(fd);
+		fclose(file);
 		return (NULL);
 	}
 	*rd = fread(buffer, 1, (sb.st_size + 1), file);

@@ -18,7 +18,7 @@ void push(stack_t **head, unsigned int line_number)
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
-		free(new);
+		dprintf(2, "Error: malloc failed\n");
 		return;
 	}
 	new->n = pn;
