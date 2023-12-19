@@ -15,7 +15,6 @@ void push(stack_t **head, unsigned int line_number)
 	if (new == NULL)
 	{
 		free(new);
-		dprintf(2, "error at %i", line_number);
 		return;
 	}
 	new->n = pn;
