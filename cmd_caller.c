@@ -22,7 +22,6 @@ void (*cmd_caller(const char *s))(stack_t **stack, unsigned int line_number)
 		{"nop", nop},
 		{"NULL", NULL},
 	};
-
 	i = 0;
 	size = 7;
 	copied_s = strdup(s);
